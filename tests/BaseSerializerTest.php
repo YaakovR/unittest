@@ -12,6 +12,6 @@ Class BaseSerializerTest extends \PHPUnit_Framework_TestCase
 
         $actual =  $serializer->serializeData($expected);
 
-        $this->assertEquals($expected, $actual, 'Serialize Data not serializing');
+        $this->assertEquals($expected, $actual, 'Serialize Data not serializing as expected');
     }
 }
