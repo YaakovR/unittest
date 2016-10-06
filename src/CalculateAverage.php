@@ -28,8 +28,9 @@ class CalculateAverage
     {
         $args = func_get_args();
 
-        $avg = $this->getAverage($args);
+        $avg = call_user_func_array(array($this, 'getAverage'), $args);
+        $serializedData = $this->serializer->serializeData($avg);
 
-        return $this->serializer->serializeData($avg);
+        return $serializedData;
     }
 }

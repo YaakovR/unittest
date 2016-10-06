@@ -12,7 +12,9 @@ class CalcAveAndSerialize extends PHPUnit_Framework_TestCase
             ->andReturn(7.5);
 
         $calcAvg = new CalculateAverage($mockSerializer);
-        $this->assertEquals(7.5, $calcAvg->getAverageAndSerialize(5, 10));
+        $serialized = $calcAvg->getAverageAndSerialize(5, 10);
+
+        $this->assertEquals(7.5, $serialized);
     }
 
     public function tearDown()
