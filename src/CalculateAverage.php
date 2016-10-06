@@ -1,28 +1,35 @@
-<?php
-
-namespace Unit;
+<?php namespace Unit;
 
 
 class CalculateAverage
 {
+    /**
+     * @var BaseSerializer
+     */
+    private $serializer;
 
-    /*public function __construct($number1, $number2)
+    public function __construct(BaseSerializer $serializer = null)
     {
-        $total = $this->getAverage($number1, $number2);
-
-        return $total;
-    }*/
-    public function __construct($number1, $number2)
-    {
-        $this->$number1 = $number1;
-        $this->$number2 = $number2;
+        if (isset($serializer)) {
+            $this->serializer = $serializer;
+        }
     }
 
     public function getAverage()
     {
         $args = func_get_args();
+
         $argsLength = count($args);
 
         return array_sum($args) / $argsLength;
+    }
+
+    public function getAverageAndSerialize()
+    {
+        $args = func_get_args();
+
+        $avg = $this->getAverage($args);
+
+        return $this->serializer->serializeData($avg);
     }
 }
